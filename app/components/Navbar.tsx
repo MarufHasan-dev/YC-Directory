@@ -4,11 +4,10 @@ import { auth, signOut, signIn } from "@/auth";
 
 const Navbar = async () => {
   const session = await auth();
-  console.log(session);
 
   return (
-    <header className="bg-white shadow-sm p-4">
-      <nav className="flex justify-between items-center">
+    <header className="bg-white shadow-sm">
+      <nav className="flex justify-between items-center max-w-335 w-full py-6 px-15 mx-auto">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -18,11 +17,13 @@ const Navbar = async () => {
             className="pointer-events-none"
           />
         </Link>
-        <div className="flex items-center gap-5 text-black">
+        <div className="flex items-center gap-x-7.5 text-black">
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
-                <span>Create</span>
+                <span className="font-semibold text-xl tracking-tight leading-[100%]">
+                  Create
+                </span>
               </Link>
               <form
                 action={async () => {
@@ -30,11 +31,22 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <button type="submit">Logout</button>
+                <button
+                  type="submit"
+                  className="text-[#EF4444] font-semibold text-xl tracking-tight leading-[100%]"
+                >
+                  Logout
+                </button>
               </form>
 
               <Link href={`/user/${session?.id}`}>
-                <span>{session?.user?.name}</span>
+                <Image
+                  className="rounded-full"
+                  width={36}
+                  height={36}
+                  alt="profile picture"
+                  src={session?.user?.image}
+                ></Image>
               </Link>
             </>
           ) : (
@@ -44,7 +56,12 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <button type="submit">Login</button>
+              <button
+                className="font-semibold text-xl tracking-tight leading-[100%]"
+                type="submit"
+              >
+                Login
+              </button>
             </form>
           )}
         </div>
