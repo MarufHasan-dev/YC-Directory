@@ -21,7 +21,7 @@ const Navbar = async () => {
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
-                <span className="font-semibold text-xl tracking-tight leading-[100%]">
+                <span className="font-semibold text-xl tracking-tight leading-[100%] hover:text-primary transition-all duration-150 ease-in-out">
                   Create
                 </span>
               </Link>
@@ -33,13 +33,16 @@ const Navbar = async () => {
               >
                 <button
                   type="submit"
-                  className="text-[#EF4444] font-semibold text-xl tracking-tight leading-[100%]"
+                  className="text-[#EF4444] font-semibold text-xl tracking-tight leading-[100%] cursor-pointer hover:text-black transition-all duration-150 ease-in-out"
                 >
                   Logout
                 </button>
               </form>
 
-              <Link href={`/user/${session?.id}`}>
+              <Link
+                href={`/user/${session?.id}`}
+                className="bg-primary rounded-full hover:scale-110 transition-all duration-200 ease-in-out"
+              >
                 <Image
                   className="rounded-full"
                   width={36}
@@ -57,7 +60,7 @@ const Navbar = async () => {
               }}
             >
               <button
-                className="font-semibold text-xl tracking-tight leading-[100%]"
+                className="font-semibold text-xl tracking-tight leading-[100%] cursor-pointer hover:text-primary transition-all duration-150 ease-in-out"
                 type="submit"
               >
                 Login
