@@ -45,3 +45,583 @@
     /* Add dark mode colors here if needed */
   }
 }
+/* ---------------- */
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-30-extrabold {
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+}
+
+.text-30-bold {
+  font-size: 30px;
+  font-weight: 700;
+  color: black;
+}
+
+.text-30-semibold {
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+}
+
+.text-26-semibold {
+  font-size: 26px;
+  font-weight: 600;
+  color: black;
+}
+
+.text-24-black {
+  font-size: 24px;
+  font-weight: 900;
+  color: black;
+}
+
+.text-20-medium {
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
+
+.text-16-medium {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+}
+
+.text-14-normal {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(243 244 246 / 0.8);
+}
+
+.pink-container {
+  width: 100%;
+  background-color: var(--color-primary);
+  background-image: linear-gradient(
+    to right,
+    transparent 48%,
+    rgba(251, 232, 67, 0.4) 48%,
+    rgba(251, 232, 67, 0.4) 52%,
+    transparent 52%
+  );
+  background-size: 2% 100%;
+  background-position: center;
+  background-repeat: repeat-x;
+  min-height: 530px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+}
+
+.pink-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to right,
+    transparent 49.5%,
+    rgba(251, 232, 67, 0.2) 49.5%,
+    rgba(251, 232, 67, 0.6) 50.5%,
+    transparent 50.5%
+  );
+  background-size: 5% 100%;
+  background-position: center;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.tag {
+  background-color: var(--color-secondary);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-work-sans);
+  font-weight: 700;
+  border-radius: 0.125rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.tag::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  border-top: 10px solid black;
+  border-right: 10px solid transparent;
+}
+
+.tag::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  border-bottom: 10px solid black;
+  border-left: 10px solid transparent;
+}
+
+.heading {
+  text-transform: uppercase;
+  background-color: black;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-work-sans);
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin: 1.25rem 0;
+  max-width: 80rem;
+  font-size: 36px;
+  line-height: 46px;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    font-size: 54px;
+    line-height: 64px;
+  }
+}
+
+.sub-heading {
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+  max-width: 42rem;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.section-container {
+  padding: 2.5rem 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card-grid-sm {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .card-grid-sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.no-result {
+  color: var(--color-black-100);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Profile Components */
+.profile-container {
+  width: 100%;
+  padding: 5rem 1.5rem 2.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .profile-container {
+    flex-direction: row;
+  }
+}
+
+.profile-card {
+  width: 20rem;
+  padding: 5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  border: 5px solid black;
+  border-radius: 30px;
+  position: relative;
+  z-index: 0;
+  height: fit-content;
+  box-shadow: var(--shadow-100);
+}
+
+@media (max-width: 1023px) {
+  .profile-card {
+    width: 100%;
+  }
+}
+
+.profile-title {
+  width: 91.666667%;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 0.75rem 1.25rem;
+  position: absolute;
+  top: -2.25rem;
+  box-shadow: var(--shadow-100);
+}
+
+.profile-title::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  z-index: -1;
+  border-radius: 20px;
+  transform: skewY(-6deg);
+}
+
+.profile-title::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  z-index: -1;
+  border-radius: 20px;
+  transform: skewY(-6deg);
+}
+
+.profile-image {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid black;
+}
+
+/* Navigation Components */
+.avatar {
+  padding: 0;
+  background: none;
+  border-radius: 50%;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+}
+
+.avatar:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.dropdown-menu {
+  width: 14rem;
+  border: 5px solid black;
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 1rem;
+}
+
+.login {
+  border: 5px solid black;
+  padding: 1rem 0;
+  background-color: white;
+  color: black;
+  position: relative;
+  font-family: var(--font-work-sans);
+  font-weight: 500;
+  transition: all 0.5s;
+  box-shadow: var(--shadow-100);
+}
+
+.login:hover {
+  box-shadow: none;
+}
+
+/* Search Form with new Tailwind v4.1 features */
+.search-form {
+  max-width: 48rem;
+  width: 100%;
+  min-height: 80px;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 80px;
+  font-size: 24px;
+  margin-top: 2rem;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.search-input {
+  flex: 1;
+  font-weight: 700;
+  width: 100%;
+  height: auto;
+  outline: none;
+}
+
+.search-input::placeholder {
+  font-weight: 600;
+  color: var(--color-black-100);
+}
+
+.search-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Startup Card with enhanced drop-shadows from v4.1 */
+.startup-card {
+  background-color: white;
+  border: 5px solid black;
+  padding: 1.5rem 1.25rem;
+  border-radius: 22px;
+  transition: all 0.5s;
+  box-shadow: var(--shadow-200);
+}
+
+.startup-card:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-100);
+  box-shadow: var(--shadow-300);
+}
+
+.startup-card-date {
+  font-weight: 500;
+  font-size: 16px;
+  background-color: var(--color-primary-100);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+
+.startup-card:hover .startup-card-date {
+  background-color: var(--color-white-100);
+}
+
+.startup-card-desc {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0.75rem 0;
+  color: var(--color-black-100);
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.startup-card-img {
+  width: 100%;
+  height: 164px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.startup-card-btn {
+  border-radius: 50px;
+  background-color: var(--color-black-200);
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  padding: 0.75rem 1.25rem;
+}
+
+.startup-card-skeleton {
+  width: 100%;
+  height: 24rem;
+  border-radius: 22px;
+  background-color: #a1a1aa;
+}
+
+/* Startup Form */
+.startup-form {
+  max-width: 42rem;
+  margin: 2.5rem auto;
+  background-color: white;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.startup-form-label {
+  font-weight: 700;
+  font-size: 18px;
+  color: black;
+  text-transform: uppercase;
+}
+
+.startup-form-input {
+  border: 3px solid black;
+  padding: 1.75rem 1.25rem;
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-top: 0.75rem;
+}
+
+.startup-form-input::placeholder {
+  color: var(--color-black-300);
+}
+
+.startup-form-textarea {
+  border: 3px solid black;
+  padding: 1.25rem;
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-top: 0.75rem;
+}
+
+.startup-form-textarea::placeholder {
+  color: var(--color-black-300);
+}
+
+.startup-form-error {
+  color: #ef4444;
+  margin-top: 0.5rem;
+  margin-left: 1.25rem;
+}
+
+.startup-form-editor {
+  margin-top: 0.75rem;
+  border: 3px solid black;
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+}
+
+.startup-form-editor::placeholder {
+  color: var(--color-black-300);
+}
+
+.startup-form-btn {
+  background-color: var(--color-primary);
+  border: 4px solid black;
+  border-radius: 50px;
+  padding: 1.25rem;
+  min-height: 70px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* View Components */
+.view-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1.25rem;
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+}
+
+.view-text {
+  font-weight: 500;
+  font-size: 16px;
+  background-color: var(--color-primary-100);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+}
+
+.view-skeleton {
+  background-color: #a1a1aa;
+  height: 2.5rem;
+  width: 6rem;
+  border-radius: 0.5rem;
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+}
+
+.category-tag {
+  font-weight: 500;
+  font-size: 16px;
+  background-color: var(--color-primary-100);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+
+/* Utility Components */
+.divider {
+  border-style: dotted;
+  background-color: #a1a1aa;
+  max-width: 56rem;
+  margin: 2.5rem auto;
+}
+
+/* W-MD-Editor specific styles */
+.w-md-editor-toolbar {
+  padding: 10px !important;
+}
+
+/* Enhanced text shadow utilities using v4.1 features */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgb(0 0 0 / 0.5);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgb(0 0 0 / 0.5);
+}
+
+/* Mask utilities for modern effects */
+.mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+.mask-fade-t {
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+}
+
+/* Safe alignment utilities from v4.1 */
+.justify-center-safe {
+  justify-content: safe center;
+}
+
+.items-center-safe {
+  align-items: safe center;
+}
+
+/* Overflow wrap utilities from v4.1 */
+.wrap-break-word {
+  overflow-wrap: break-word;
+}
+
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+}
