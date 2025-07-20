@@ -53,7 +53,7 @@ export default function StartupCard({ post }: { post: StartupTypeCard }) {
         <p className="startup-card-desc">{description}</p>
 
         <Image
-          src={cardImage}
+          src={image}
           alt="product image"
           className="startup-card-img"
           width={276}
