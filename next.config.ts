@@ -17,12 +17,12 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    // ppr: "incremental",
+    ppr: "incremental",
   },
   devIndicators: {
-    // appIsrStatus: false,          // ❌ remove
-    // buildActivity: true,          // ❌ remove
-    // buildActivityPosition: 'top-right', // ❌ rename
+    // appIsrStatus: false,
+    // buildActivity: true,
+    // buildActivityPosition: 'top-right',
     position: "top-right", // ✅ new syntax
   },
 };
