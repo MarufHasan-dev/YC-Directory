@@ -23,6 +23,8 @@ export default async function page({
 
   const parsedContent = md.render(post?.pitch || "");
 
+  console.log(parsedContent);
+
   return (
     <>
       <section className="pink-container !min-h-[230px]">
@@ -65,13 +67,17 @@ export default async function page({
 
           {parsedContent ? (
             <article
-              className="prose"
+              className="prose max-w-4xl font-work-sans break-all"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
           ) : (
             <p className="no-result">No details provided</p>
           )}
         </div>
+
+        <hr className="divider" />
+
+        {/* TODO: EDITOR SELECTED STARTUPS */}
       </section>
     </>
   );
