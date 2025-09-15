@@ -9,17 +9,21 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
-    domains: ["avatars.githubusercontent.com"],
   },
 
   experimental: {
-    ppr: "incremental",
+    // ppr: "incremental",
   },
   devIndicators: {
-    appIsrStatus: true,
-    buildActivity: true,
-    buildActivityPosition: "bottom-right",
+    // appIsrStatus: false,          // ❌ remove
+    // buildActivity: true,          // ❌ remove
+    // buildActivityPosition: 'top-right', // ❌ rename
+    position: "top-right", // ✅ new syntax
   },
 };
 
