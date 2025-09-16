@@ -26,8 +26,6 @@ export default async function page({
 
   const parsedContent = md.render(post?.pitch || "");
 
-  console.log(parsedContent);
-
   return (
     <>
       <section className="pink-container !min-h-[230px]">

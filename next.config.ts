@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
     // appIsrStatus: false,
     // buildActivity: true,
     // buildActivityPosition: 'top-right',
-    position: "top-right", // ✅ new syntax
+    // position: "top-right",
   },
 };
 
