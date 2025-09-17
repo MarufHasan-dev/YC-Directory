@@ -1,20 +1,81 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import MDEditor from "@uiw/react-md-editor";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
+import { formSchema } from "@/lib/validation";
+import { z } from "zod";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 function StartupForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [pitch, setPitch] = useState();
+  const [pitch, setPitch] = useState("");
+  const router = useRouter();
 
-  const isPending = false;
+  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+    try {
+      const formValues = {
+        title: formData.get("title") as string,
+        description: formData.get("description") as string,
+        category: formData.get("category") as string,
+        link: formData.get("link") as string,
+        pitch,
+      };
+
+      await formSchema.parseAsync(formValues);
+      console.log(formValues);
+      // const result = await createIdea(prevState, formData, pitch);
+
+      // console.log(result);
+
+      // if (result.status == "SUCCESS") {
+      //   toast.info("Success", {
+      //     description: "Your startup pitch has been created successfully",
+      //   });
+      //   router.push(`/startup/${result.id}`);
+      // }
+
+      // return result;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors = error.flatten().fieldErrors;
+
+        const newErrors: Record<string, string> = {};
+        for (const key in fieldErrors) {
+          if (Object.prototype.hasOwnProperty.call(fieldErrors, key)) {
+            const messages = fieldErrors[key as keyof typeof fieldErrors];
+            if (messages && messages.length > 0) {
+              newErrors[key] = messages[0];
+            }
+          }
+        }
+        setErrors(newErrors);
+
+        toast.error("Error", {
+          description: "Please check your inputs and try again",
+        });
+
+        return { ...prevState, error: "Validation failed", status: "ERROR" };
+      }
+      return {
+        ...prevState,
+        error: "An unexpected error has occured",
+        status: "ERROR",
+      };
+    }
+  };
+
+  const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+    error: "",
+    status: "INITIAL",
+  });
 
   return (
-    <form action={() => {}} className="startup-form">
+    <form action={formAction} className="startup-form">
       <div>
         <label htmlFor="title" className="startup-form-label">
           Title
@@ -98,7 +159,7 @@ function StartupForm() {
 
       <Button
         type="submit"
-        className="startup-form-btn text-white"
+        className="startup-form-btn text-white cursor-pointer disabled:cursor-progress"
         disabled={isPending}
       >
         {isPending ? "Submitting..." : "Submit your pitch"}
