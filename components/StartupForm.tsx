@@ -10,6 +10,7 @@ import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { createPitch } from "@/lib/actions";
 
 function StartupForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -27,33 +28,22 @@ function StartupForm() {
       };
 
       await formSchema.parseAsync(formValues);
-      console.log(formValues);
-      // const result = await createIdea(prevState, formData, pitch);
 
-      // console.log(result);
+      const result = await createPitch(prevState, formData, pitch);
 
-      // if (result.status == "SUCCESS") {
-      //   toast.info("Success", {
-      //     description: "Your startup pitch has been created successfully",
-      //   });
-      //   router.push(`/startup/${result.id}`);
-      // }
+      if (result.status == "SUCCESS") {
+        toast.info("Success", {
+          description: "Your startup pitch has been created successfully",
+        });
+        router.push(`/startup/${result._id}`);
+      }
 
-      // return result;
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
 
-        const newErrors: Record<string, string> = {};
-        for (const key in fieldErrors) {
-          if (Object.prototype.hasOwnProperty.call(fieldErrors, key)) {
-            const messages = fieldErrors[key as keyof typeof fieldErrors];
-            if (messages && messages.length > 0) {
-              newErrors[key] = messages[0];
-            }
-          }
-        }
-        setErrors(newErrors);
+        setErrors(fieldErrors as Record<string, string>);
 
         toast.error("Error", {
           description: "Please check your inputs and try again",
