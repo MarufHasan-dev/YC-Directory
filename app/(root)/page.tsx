@@ -18,7 +18,7 @@ export default async function Home({
     <>
       <section className="pink-container">
         <h1 className="heading">
-          Pitch Your Startup,
+          Pitch Your Startup
           <br />
           Connect with Entrepreneurs
         </h1>
