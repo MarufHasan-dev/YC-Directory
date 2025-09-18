@@ -1,9 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
+import { BadgePlus, LogOut } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Navbar = async () => {
   const session = await auth();
+
+  console.log(session);
 
   return (
     <header className="bg-white shadow-sm">
@@ -21,9 +25,10 @@ const Navbar = async () => {
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
-                <span className="font-semibold text-xl tracking-tight leading-[100%]">
+                <span className="font-semibold text-xl tracking-tight leading-[100%] max-sm:hidden">
                   Create
                 </span>
+                <BadgePlus className="size-6 sm:hidden" />
               </Link>
               <form
                 action={async () => {
@@ -31,25 +36,22 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <button
-                  type="submit"
-                  className="text-[#EF4444] font-semibold text-xl tracking-tight leading-[100%] cursor-pointer hover:text-black transition-all duration-150 ease-in-out"
-                >
-                  Logout
+                <button type="submit">
+                  <span className="text-[#EF4444] font-semibold text-xl tracking-tight leading-[100%] cursor-pointer hover:text-black transition-all duration-150 ease-in-out max-sm:hidden">
+                    Logout
+                  </span>
+                  <LogOut className="size-6 sm:hidden text-red-500" />
                 </button>
               </form>
 
-              <Link
-                href={`/user/${session?.id}`}
-                className="rounded-full hover:scale-110 transition-all duration-200 ease-in-out"
-              >
-                <Image
-                  className="rounded-full"
-                  width={36}
-                  height={36}
-                  alt="profile picture"
-                  src={session?.user?.image}
-                ></Image>
+              <Link href={`/user/${session?.user?.id}`}>
+                <Avatar className="size-10">
+                  <AvatarImage
+                    src={session?.user?.image || ""}
+                    alt={session?.user?.name || ""}
+                  />
+                  <AvatarFallback>AV</AvatarFallback>
+                </Avatar>
               </Link>
             </>
           ) : (

@@ -18,6 +18,7 @@
     "next": "$next"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/client": "^7.11.1",
     "@sanity/image-url": "^1.1.0",
@@ -28,7 +29,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
     "markdown-it": "^14.1.0",
-    "next": "^15.6.0-canary.10",
+    "next": "^15.6.0-canary.12",
     "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^9.12.3",
     "next-themes": "^0.4.6",

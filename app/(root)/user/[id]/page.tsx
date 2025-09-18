@@ -15,7 +15,6 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   const user = await client.fetch(AUTHOR_BY_ID_QUERY, { id });
 
   console.log(user);
-  console.log(session);
 
   if (!user) return notFound();
 
@@ -46,11 +45,12 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
 
         <div className="flex-1 flex flex-col gap-5 lg:mt-5">
           <p className="text-3xl font-bold">
-            {session?.id === id ? "Your" : "All"} Startups
+            {session?.user?.id == id ? "Your" : "All"} Startups
           </p>
-          <ul className="card-grid-sm">
-            <Suspense fallback={<StartupCardSkeleton />}></Suspense>
-            <UserStartups id={id} />
+          <ul className="grid sm:grid-cols-2 gap-5">
+            <Suspense fallback={<StartupCardSkeleton />}>
+              <UserStartups id={id} />
+            </Suspense>
           </ul>
         </div>
       </section>
